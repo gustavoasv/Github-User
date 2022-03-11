@@ -1,10 +1,15 @@
-import { Routes,  Route } from "react-router-dom";
-import { Repos } from "./components/CardTheme";
+import { Routes, Route } from "react-router-dom";
+import { Header } from "./components/Home";
+import { Repositories } from "./pages/Repositories";
 
 export const Rotas = () => {
-    return (
-        <Routes>
-            <Route path="/repositories" element={<Repos></Repos>}></Route>
-        </Routes>
-    )
-}
+  return (
+    <Routes>
+      <Route path="/" element={<Header></Header>}></Route>
+      <Route
+        path="/repositories"
+        element={<Repositories></Repositories>}
+      ></Route>
+    </Routes>
+  );
+};

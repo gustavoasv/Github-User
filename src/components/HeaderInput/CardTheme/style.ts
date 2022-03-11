@@ -1,5 +1,8 @@
 import styled from "styled-components";
+export const CardMain = styled.div`
+  background-color: red;
 
+`
 export const CardArea = styled.div`
   max-width: 500px;
   height: 350px;
@@ -37,14 +40,13 @@ export const Profle = styled.div`
 export const UserProfile = styled.div`
   width: 120px;
   border-radius: 9px;
-  text-align: center;
   background: #FFF;
   margin: 0 0 0 10px;
-  height: 30px;
 `;
 
 export const User = styled.p`
  font-family: Montserrat;
+ text-align: center;
  color: #818181;
 `;
 

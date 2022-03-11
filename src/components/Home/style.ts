@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
-export const Head = styled.div`
+export const Main = styled.div`
   max-width: 590px;
-  margin: 80px auto 0;
+  margin: 80px auto;
+` 
+export const Head = styled.div`
+  margin: 0 auto;
   line-height: 2px;
+  margin: 0 auto;
 `;
 export const Title = styled.h1`
   font-family: "Montserrat", sans-serif;
@@ -27,6 +31,7 @@ export const Input = styled.input`
   outline: 0;
   font-family: "Montserrat", sans-serif;
   border-radius: 6px;
+  font-family: "Montserrat", sans-serif;
   border: inherit;
   padding: 0 0 0 10px;
 `;
@@ -42,3 +47,15 @@ export const Button = styled.button`
   border-radius: 4px;
   color: #fff;
 `;
+
+export const Resume = styled.div`
+  background-color: #FFF;
+  width: 90%;
+  height: 55vh;
+  font-size: 12px;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  border: 1px solid #e9e9e9;
+  margin: 30px auto;
+`
