@@ -1,7 +1,7 @@
 ## GitHub User with GitHub api for list users
 
-## To-Do
+## to-do
 
-[x] create screens
-[] fetch api with axios 
-[] list users data on screens
+- [x] create screens
+- [x] fetch api with axios
+- [x] list users data on screens
