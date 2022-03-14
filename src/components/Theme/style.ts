@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const MainCard = styled.div`
   max-width: 520px;
-  height: 373px;
+  height: 343px;
   margin: 20px auto;
   border-radius: 9px;
   background-color: #f9f9f9;
+  border: 1px solid #e9e9e9;
 `;
 export const UserBanner = styled.div`
   width: 100%;
@@ -27,9 +28,9 @@ export const UserAvatar = styled.div`
 export const Avatar = styled.div`
   width: 77px;
   height: 77px;
-  background-color: #FFF;
-  border-radius: 10px;
-  border: 5px solid #FFF;
+  background-color: #fff;
+  border-radius: 9px;
+  border: 5px solid #fff;
 
   img {
     width: 77px;
@@ -45,7 +46,6 @@ export const UserName = styled.div`
   font-weight: bold;
   text-align: center;
   margin: 0 0 0 10px;
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 9px;
 `;
-

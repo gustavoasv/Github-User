@@ -1,11 +1,11 @@
 import * as C from "./style";
-import { useEffect, useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import api from "../../service/api";
 import { Theme } from "../../components/Theme";
-import { Button } from "../../components/ButtonLink";
-import { UserBio } from "../../components/UserBio";
-import { ButtonTheme } from "../../components/UserBio/ButtonsTheme";
-import { stringify } from "querystring";
+import { Content } from "../../contexts/userContext";
+import { ButtonLink } from "../../components/ButtonLink";
+import { Link } from "react-router-dom";
+import { Repositories } from "../Repositories";
 
 export type Api = {
   avatar_url: string;
@@ -15,34 +15,32 @@ export type Api = {
 };
 
 export const Home = () => {
-  const [user, setUser] = useState<Api>();
   const [inputValue, setInput] = useState("");
+  const [resRepo, setresRepo] = useState('');
+  const [resFollowers, setResFollowers] = useState('')
   const [loading, setLoading] = useState(true);
-
-  const handleGetUser = async () => {
-    if (!inputValue) {
-      alert("Digite Algo");
-      setLoading(true);
-    }
+  const context = useContext(Content);
+  
+  const getUser = async () => {
     setLoading(false);
     try {
-      const req = await api.get(`users/${inputValue}`);
-      const res = await req.data; 
-      setUser(res)
-      console.log(res)
-    setLoading(true);
-    } catch (erro) {
-      if (erro) {
-        alert("Usúario não encontrado :(");
-        setLoading(true);
+      const get = await api.get(`users/${inputValue}`);
+      const getRepos = await api.get(`users/${inputValue}/repos`)
+      const getFollowers = await api.get(`users/${inputValue}/followers`)
+      context.setUsersApi(get.data);
+      setresRepo(getRepos.data)
+      setResFollowers(getFollowers.data)
+
+      console.log(resRepo.length)
+    } catch (e) {
+      if (e) {
+        setInput("");
+        alert("Usúario não encontrado! digite novamente");
       }
     }
+    setLoading(true);
   };
-
-  // useEffect(() => {
-  //   const setData = localStorage.setItem('users', user)  
-  // }, [user])
-
+  const ctx = useContext(Content);
   return (
     <C.Main>
       <h1>Github Users</h1>
@@ -52,24 +50,45 @@ export const Home = () => {
           placeholder="Digite o nome de Usúario"
           onChange={(e) => setInput(e.target.value)}
         ></C.Input>
-        <C.Button onClick={handleGetUser}>Buscar</C.Button>
+        <C.Button onClick={getUser}>Buscar</C.Button>
       </C.InputArea>
-
       {!loading && <C.Loader></C.Loader>}
-
-      {user && (
+      {context.users.login && (
         <>
-          <Theme dataPhoto={user.avatar_url} dataName={user?.login}>
-            <UserBio bioUser={user.bio}></UserBio>
-            <ButtonTheme></ButtonTheme>
+          <Theme>
+            <C.Bio>
+              <p>{ctx.users.bio}</p>
+            </C.Bio>
+            <C.Buttons>
+              <C.ButtonsArea>
+                <Link to="/followers">
+                  <C.ButtonCount>
+                    <p>{resFollowers.length}</p>
+                  </C.ButtonCount>
+                  <C.ButtonContent>
+                    <p>Seguidores</p>
+                  </C.ButtonContent>
+                </Link>
+              </C.ButtonsArea>
+              <C.ButtonsArea>
+                <Link to="/repositories">
+                  <C.ButtonContent>
+                    <p>Respositorios</p>
+                  </C.ButtonContent>
+                  <C.ButtonCount>
+                    <p>{resRepo.length}</p>
+                  </C.ButtonCount>
+                </Link>
+                {/* </C.ButtonCount> */}
+              </C.ButtonsArea>
+            </C.Buttons>
           </Theme>
-          <Button text="Ir para o perfil" html_url={user.html_url}></Button>
+          <ButtonLink
+            html_url={ctx.users.html_url}
+            text={"Ir para o peril"}
+          ></ButtonLink>
         </>
       )}
     </C.Main>
   );
 };
-function res(res: any): string {
-  throw new Error("Function not implemented.");
-}
-

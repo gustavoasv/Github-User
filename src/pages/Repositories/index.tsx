@@ -1,18 +1,17 @@
-import { Button } from "../../components/ButtonLink";
 import { Theme } from "../../components/Theme";
 import * as C from "./styled";
-import { useEffect, useState } from "react";
-
+import { useEffect, useState, useContext } from "react";
+import { Content } from "../../contexts/userContext";
 import { Api } from "../Home";
+import api from "../../service/api";
 
 export const Repositories = () => {
   const [users, setUsers] = useState<Api>();
 
   useEffect(() => {
     const getPageRepos = async () => {
-      const getLocalSave: any = localStorage.getItem("user");
-      const objeto = JSON.parse(getLocalSave)
-      setUsers(objeto)
+    const repos = await api.get(`users/respos`)
+      setUsers(repos.data)
     };
     getPageRepos();
   }, []);
@@ -20,9 +19,8 @@ export const Repositories = () => {
   return (
     <C.RepoMain>
       <Theme>
-        <img src={users?.avatar_url}></img>
+       
       </Theme>
-      <Button text="I para o repositorio"></Button>
     </C.RepoMain>
   );
 };

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-  max-width: 560px;
-  margin: 50px auto;
-  height: 600px;
+  max-width: 580px;
+  margin: 35px auto;
+  height: 450px;
 
   h1 {
     line-height: 1px;
@@ -59,3 +59,55 @@ export const Loader = styled.div`
     }
   }
 `;
+
+export const Bio = styled.div`
+  max-width: 80%;
+  height: auto;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 9px;
+  position: relative;
+  border: 1px solid #e9e9e9;
+  top: 60px;
+  margin: 0 auto;
+
+  p {
+    text-align: center;
+  }
+`;
+
+export const Buttons = styled.div`
+  max-width: 100%;
+  /* height: 10px; */
+  position: relative;
+  top: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+export const ButtonsArea = styled.div`
+display: flex;
+background-color: #FFF;
+border-radius: 9px;
+box-shadow: -1px 2px 31px -6px rgba(0,0,0,0.17);
+cursor: pointer;
+
+a{
+  display: flex;
+  text-decoration: none;
+}
+`
+
+export const ButtonCount = styled.div`
+ padding: 0 10px 0 10px;
+`
+
+export const ButtonContent = styled.div`
+color: #FFF;
+background-color: #d998e3;
+width: 109px;
+border-radius: 9px;
+padding: 0 10px 0 10px;
+text-align: center;
+`

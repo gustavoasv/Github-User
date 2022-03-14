@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const RepoMain = styled.div`
+export const FollowerMain = styled.div`
   margin: 135px 0 0 0;
 `;

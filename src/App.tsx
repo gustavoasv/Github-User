@@ -1,9 +1,12 @@
+import { Content, ContextProvider } from "./contexts/userContext";
 import { Rotas } from "./routes";
 
 function App() {
   return (
     <>
-      <Rotas />
+      <ContextProvider>
+        <Rotas />
+      </ContextProvider>
     </>
   );
 }
