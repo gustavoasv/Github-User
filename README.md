@@ -3,5 +3,5 @@
 ## to-do
 
 - [x] create screens
-- [x] fetch api with axios
+- [x] request api with axios
 - [x] list users data on screens
