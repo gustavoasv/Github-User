@@ -1,4 +1,4 @@
-import { Content, ContextProvider } from "./contexts/userContext";
+import { ContextProvider } from "./contexts/userContext";
 import { Rotas } from "./routes";
 
 function App() {

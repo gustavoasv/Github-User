@@ -5,7 +5,6 @@ import { Theme } from "../../components/Theme";
 import { Content } from "../../contexts/userContext";
 import { ButtonLink } from "../../components/ButtonLink";
 import { Link } from "react-router-dom";
-import { Repositories } from "../Repositories";
 
 export type Api = {
   avatar_url: string;
@@ -19,7 +18,8 @@ export const Home = () => {
   const [resRepo, setresRepo] = useState('');
   const [resFollowers, setResFollowers] = useState('')
   const [loading, setLoading] = useState(true);
-  const context = useContext(Content);
+  const context = useContext(Content)
+
   
   const getUser = async () => {
     setLoading(false);
@@ -28,10 +28,10 @@ export const Home = () => {
       const getRepos = await api.get(`users/${inputValue}/repos`)
       const getFollowers = await api.get(`users/${inputValue}/followers`)
       context.setUsersApi(get.data);
-      setresRepo(getRepos.data)
+      context.setUsersApi
       setResFollowers(getFollowers.data)
-
-      console.log(resRepo.length)
+      setresRepo(getRepos.data)
+      
     } catch (e) {
       if (e) {
         setInput("");
@@ -56,17 +56,17 @@ export const Home = () => {
       {context.users.login && (
         <>
           <Theme>
-            <C.Bio>
+          <C.Bio>
               <p>{ctx.users.bio}</p>
             </C.Bio>
             <C.Buttons>
               <C.ButtonsArea>
                 <Link to="/followers">
                   <C.ButtonCount>
-                    <p>{resFollowers.length}</p>
+                    <p>{}</p>
                   </C.ButtonCount>
                   <C.ButtonContent>
-                    <p>Seguidores</p>
+                    <p>Seguindo</p>
                   </C.ButtonContent>
                 </Link>
               </C.ButtonsArea>
@@ -76,7 +76,6 @@ export const Home = () => {
                     <p>Respositorios</p>
                   </C.ButtonContent>
                   <C.ButtonCount>
-                    <p>{resRepo.length}</p>
                   </C.ButtonCount>
                 </Link>
                 {/* </C.ButtonCount> */}

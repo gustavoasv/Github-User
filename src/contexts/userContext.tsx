@@ -1,7 +1,6 @@
 import React, { createContext, useState } from "react";
 
 type Content = {
-  // users: {};
   avatar_url: string;
   login: string;
   bio: string;
@@ -13,7 +12,7 @@ type PropsContextUser = {
   setUsersApi: React.Dispatch<React.SetStateAction<Content>>;
 };
 
-const InitialState = {
+const InitialStateFirst = {
   users: {
     avatar_url: "",
     login: "",
@@ -23,10 +22,10 @@ const InitialState = {
   setUsersApi: () => {},
 };
 
-export const Content = createContext<PropsContextUser>(InitialState);
+export const Content = createContext<PropsContextUser>(InitialStateFirst);
 
 export const ContextProvider: React.FC = ({ children }) => {
-  const [users, setUsersApi] = useState(InitialState.users);
+  const [users, setUsersApi] = useState(InitialStateFirst.users);
 
   return (
     <Content.Provider value={{ users, setUsersApi }}>

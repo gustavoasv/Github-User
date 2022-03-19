@@ -2,9 +2,10 @@ import * as C from "./style";
 import { ReactNode, useContext } from "react";
 import { Content } from "../../contexts/userContext";
 
+
 type PropsC = {
   children: ReactNode;
-};
+}
 
 export const Theme = ({ children }: PropsC) => {
   const ctx = useContext(Content);

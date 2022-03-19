@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainCard = styled.div`
   max-width: 520px;
-  height: 343px;
+  height: 363px;
   margin: 20px auto;
   border-radius: 9px;
   background-color: #f9f9f9;
@@ -49,3 +49,4 @@ export const UserName = styled.div`
   background-color: #fff;
   border-radius: 9px;
 `;
+
